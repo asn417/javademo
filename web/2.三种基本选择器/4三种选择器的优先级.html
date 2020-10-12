@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--
+    优先级顺序：id选择器>class选择器>标签选择器
+    -->
+
+    <!--标签选择器-->
+    <style>
+        h1{
+            color: #030503;
+        }
+    </style>
+    <!--id选择器-->
+    <style>
+        #idname{
+            color: red;
+        }
+    </style>
+    <!--class选择器-->
+    <style>
+        .classname{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="idname" class="classname">一级标题</h1>
+<h1 id="idname">一级标题</h1>
+<h1 class="classname">一级标题</h1>
+<h1>一级标题</h1>
+
+</body>
+</html>

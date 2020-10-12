@@ -1,0 +1,42 @@
+## 一、css四种导入方式
+### 外部样式
+单独创建css文件，然后在HTML中引用即可。对于css2来说，是通过@import方式引用的，称为导入式；而css3中 
+是通过link标签引用的，称为链接式。  
+css目录下创建css文件，名为filename
+```css
+css文件中样式定义格式：
+h1{
+     color: green;
+ } 
+```
+#### 导入式
+```html
+<style>
+        @import url("1.样式表导入方式/css/style.css");
+    </style>
+```
+#### 链接式
+```html
+HTML中引用方式：
+ <link rel="stylesheet" href="css/filename.css">
+```
+### 内部样式
+直接在HTML中通过style标签定义样式，规范的写法是将样式定义在head中。
+```html
+<style>
+    h1{
+        color: red;
+    }
+</style>
+```
+### 行内样式
+直接在标签中通过style属性进行定义。
+```html
+<h1 style="color: blueviolet">一级标题</h1>
+```
+## 二、3种基本选择器(重要)
+- 标签选择器
+- id选择器
+- class选择器
+
+三种基本选择器的优先级：id选择器>class选择器>标签选择器

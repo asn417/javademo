@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+    语法规范：将样式标签写在head里
+    语法：
+        选择器{
+            声明1；
+            声明2；
+            ...
+        }
+    -->
+    <!--内部样式引用-->
+    <style>
+        h1{
+            color: red;
+        }
+    </style>
+    <!--外部样式引用：链接式-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--外部样式引用：导入式-->
+    <style>
+        @import url("css/style.css");
+    </style>
+</head>
+<body>
+<h1 style="color: blueviolet">一级标题</h1>
+</body>
+</html>
