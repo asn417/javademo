@@ -1,0 +1,72 @@
+对象的创建过程，包括类的初始化和类的实例化。
+##构造器
+只有通过new的方式创建对象的时候才会调用构造器
+##构造代码块
+```
+{ ... }
+```
+构造代码块先于构造器执行。
+
+构造代码块与构造函数的区别是：构造代码块是给所有对象进行统一初始化，
+而构造函数是给对应的对象初始化，因为构造函数是可以多个的，运行哪个构造函数就会建立什么样的对象，
+但无论建立哪个对象，都会先执行相同的构造代码块。也就是说，构造代码块中定义的是不同对象共性的
+初始化内容。
+##静态代码块
+```
+static{
+    ...
+}
+```
+静态代码块随着类的加载而执行(因此比main方法先执行)，只执行一次。
+
+##对象实例化过程
+父类的类构造器\<clinit>() ->  
+子类的类构造器\<clinit>() ->  
+父类的成员变量和构造代码块 ->  
+父类的构造器 ->  
+子类的成员变量和构造代码块 ->  
+子类的构造器。
+
+**注意：类构造器\<clinit>() 是由 静态变量+静态代码块 组成的。类构造器本质上是编译器收集所有静态语句块和类变量的赋值语句按语句在源码中的顺序合并生成类构造器<clinit>()**
+
+##面试题一
+```java
+public class StaticTest {
+    public static void main(String[] args) {
+        staticFunction();
+    }
+
+    static StaticTest st = new StaticTest();
+
+    static {   //静态代码块
+        System.out.println("1");
+    }
+
+    {       // 实例代码块
+        System.out.println("2");
+    }
+
+    StaticTest() {    // 实例构造器
+        System.out.println("3");
+        System.out.println("a=" + a + ",b=" + b);
+    }
+
+    public static void staticFunction() {   // 静态方法
+        System.out.println("4");
+    }
+
+    int a = 110;    // 实例变量
+    static int b = 112;     // 静态变量
+}
+/* Output: 
+        2
+        3
+        a=110,b=0
+        1
+        4
+ *///:~
+```
+这说明，对象的初始化不必等到类的初始化结束后才进行，可以穿插，但开始的顺序肯定是类先开始初始化然后对象才能初始化。
+
+[参考博文](https://blog.csdn.net/justloveyou_/article/details/72466105)
+

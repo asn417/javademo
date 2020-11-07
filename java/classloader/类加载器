@@ -1,0 +1,25 @@
+##类加载器层次关系
+从上到下  
+* 启动类加载器
+* 扩展类加载器
+* 系统类加载器
+* 自定义类加载器
+
+##类加载器的加载路径
+每个类加载器都有自己的加载路径（命名空间）。
+```
+//启动（Bootstrap）类加载器的加载路径
+System.out.println(System.getProperty("sun.boot.class.path"));
+//扩展（Extension）类加载器的加载路径
+System.out.println(System.getProperty("java.ext.dirs"));
+//系统（System）类加载器的加载路径
+System.out.println(System.getProperty("java.class.path"));
+```
+
+##类的唯一性定义
+JVM中，一个类由其**全限定名+对应的ClassLoader的实例**作为唯一标识，不同类加载器加载的类将被置于不同的命名空间。
+
+##双亲委派模型
+当一个类加载器接收到加载请求时，会将请求委派给父类加载器。因此，根据类加载器的的
+层次关系可知，每个类加载请求最终都会委派到启动类加载器。只有当父类加载器无法加载
+时，才会由当前类加载器加载。
